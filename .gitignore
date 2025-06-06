@@ -1,0 +1,3 @@
+# .gitignore
+.ttn-lw-cli.yml
+*.json
