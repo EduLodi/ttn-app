@@ -1,0 +1,84 @@
+{
+  "_comment": "A complex payload definition for an 'Agri-Sensor Pro' device.",
+  "_field_order": [
+    "header",
+    "latitude",
+    "longitude",
+    "status_mask",
+    "temperature",
+    "humidity",
+    "soil_moisture",
+    "battery_level",
+    "message_count"
+  ],
+  "fields": {
+    "header": {
+      "type": "hex_string",
+      "length_bytes": 2,
+      "_comment": "A fixed 2-byte header, e.g., 0xAB 0xBA. Generator will create random hex; for a fixed value, you'd need to modify the generator script or use a fixed payload type."
+    },
+    "latitude": {
+      "type": "float",
+      "min": -90.0,
+      "max": 90.0,
+      "precision": 6,
+      "packer": "f",
+      "byte_order": "little",
+      "_comment": "Standard 4-byte float, little-endian."
+    },
+    "longitude": {
+      "type": "float",
+      "min": -180.0,
+      "max": 180.0,
+      "precision": 6,
+      "packer": "f",
+      "byte_order": "little",
+      "_comment": "Standard 4-byte float, little-endian."
+    },
+    "status_mask": {
+      "type": "uint",
+      "min": 0,
+      "max": 255,
+      "packer": "B",
+      "_comment": "A single byte bitmask. Bit 0: GPS Lock, Bit 1: Error State, Bit 2: Low Battery Warning, etc. The decoder would need to parse these bits."
+    },
+    "temperature": {
+      "type": "int",
+      "min": -400,
+      "max": 850,
+      "packer": "h",
+      "byte_order": "big",
+      "_comment": "Signed 2-byte integer, big-endian. Value is temp * 10 (e.g., 255 represents 25.5°C)."
+    },
+    "humidity": {
+      "type": "uint",
+      "min": 0,
+      "max": 200,
+      "packer": "B",
+      "_comment": "Unsigned 1-byte integer. Value is humidity * 2 (e.g., 140 represents 70.0%)."
+    },
+    "soil_moisture": {
+      "type": "uint",
+      "min": 0,
+      "max": 1023,
+      "packer": "H",
+      "byte_order": "little",
+      "_comment": "Unsigned 2-byte integer, 0-1023 represents the sensor's raw ADC reading."
+    },
+    "battery_level": {
+      "type": "uint",
+      "min": 0,
+      "max": 100,
+      "packer": "B",
+      "_comment": "Unsigned 1-byte integer representing battery percentage (0-100)."
+    },
+    "message_count": {
+      "type": "uint",
+      "min": 0,
+      "max": 65535,
+      "packer": "H",
+      "byte_order": "big",
+      "_comment": "Unsigned 2-byte message counter."
+    }
+  }
+}

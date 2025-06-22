@@ -1,3 +1,4 @@
 # .gitignore
 .ttn-lw-cli.yml
 *.json
+!complex_payload.json
