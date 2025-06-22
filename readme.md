@@ -1,5 +1,3 @@
-Okay, here is the full `README.md` file again, presented as a raw Markdown code block as requested. You can copy everything between the triple backticks.
-
 # Advanced TTN Simulator & Decoder Generator
 
 ![Python Version](https://img.shields.io/badge/python-3.6%2B-blue.svg)
